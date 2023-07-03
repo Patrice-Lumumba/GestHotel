@@ -1,7 +1,13 @@
 
 <?php
+
+    session_start();
+
      include 'header.php';
      include 'functions.php';
+    //  require_once 'database.php';
+
+
 ?>
 
 <!DOCTYPE html>
@@ -15,14 +21,14 @@
 <body>
   <div class="container">
     <h1>Formulaire d'enregistrement</h1>
-    <form action="" method="POST">
+    <form action="../traitement.php" method="POST">
                 <?php generate_input('First Name','nom','text','form-control','Enter First Name') ?>
                 <?php generate_input('Last Name','prenom','text','form-control','Enter Last Name') ?>
                 <?php generate_input('Email','email','text','form-control','Enter Email') ?>
                 
-                <?php generate_input('Password','password','password','form-control','Enter Password') ?>
+                <?php generate_input('Password','mdp','password','form-control','Enter Password') ?>
 
-                <button class="btn btn-primary" type="submit" name="sign"> Login </button>
+                <button class="btn btn-primary" type="submit" name="submit"> Login </button>
 
                 <a href="../index.php" class="btn btn-danger"> CANCEL</a>
 

@@ -1,6 +1,10 @@
 <?php 
+session_start();
 
-// include 'database.php';
+
+include 'database.php';
+
+
 
 ?>
 
@@ -34,13 +38,13 @@
                     <form class="login-form" method="POST" action="">
                         <div class="mb-5">
                             <label for="email" class="form-label">Email:</label>
-                            <input type="email" class="form-control" id="email" placeholder="Entrez votre email" required name="email" name="email">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Entrez votre email" required name="email" name="email">
                         </div>
                         <div class="mb-5">
                             <label for="password" class="form-label">Mot de passe:</label>
-                            <input type="password" class="form-control" id="password" placeholder="Entrez votre mot de passe" required name="password">
+                            <input type="password" class="form-control" name="mdp" id="password" placeholder="Entrez votre mot de passe" required name="password">
                         </div>
-                        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+                        <button class="w-100 btn btn-lg btn-primary" type="submit" name="sign">Sign in</button>
                     </form>
                 </div>
             </div>

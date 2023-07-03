@@ -4,32 +4,18 @@ $database = "test";
 $username = "root";
 $password = "";
  
-// Create connection
- 
-// $conn = mysqli_connect($server, $username, $password, $database);
- 
-// Check connection
- 
-// if (!$conn) {
- 
-//     die("Connection failed: " . mysqli_connect_error());
- 
-// }
-// echo "Connected successfully";
-// mysqli_close($conn);
 
+try {
+    $conn = new PDO("mysql:host=$server;dbname=test", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-try{
-
-    $database = new PDO('mysql:host=localhost;dbname=test', $username, $password);
-    echo "bien";
-    foreach ($database->query('SELECT * FROM user') as $row){
-        print_r($row) . "<br/>";
-    }
-
-} catch(PDOException $e){
-    print "Erreur : " . $e->getMessage() . "<br/>";
-    die();
+        
+    echo "Connexion à la BD établie";
+    
+    
+} catch(PDOException $e) {
+    echo "Echec de la connexion : <br>" . $e->getMessage();
+    echo "Table not created";
 }
 
 ?>
