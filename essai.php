@@ -1,12 +1,10 @@
 
 <?php
 
-    session_start();
-
-     include 'header.php';
-     include 'functions.php';
-    //  require_once 'database.php';
-
+session_start();
+require_once './database.php';
+include './views/header.php';
+include './views/functions.php';
 
 ?>
 
@@ -17,7 +15,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <title>Formulaire d'enregistrement</title>
-  <link rel="stylesheet" href="../bootstrap.css">
+  <link rel="stylesheet" href="./bootstrap.css">
 
 </head>
 <body>
@@ -58,7 +56,7 @@
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
         <hr class="my-4">
-        <small class="text-muted">Vous avez déjà un compte? Cliquez <a href="../index.php">ici</a></small>
+        <small class="text-muted">Vous avez déjà un compte? Cliquez <a href="./views/inscription.php">ici</a></small>
         </form>
     </div>
 

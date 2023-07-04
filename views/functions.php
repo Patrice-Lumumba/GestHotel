@@ -2,7 +2,7 @@
 
 function generate_block($input_label) {
     ?>
-    <div class="form-group">
+    <div class="form-floating mb-3">
         <?=$input_label?>
     </div>
     <?php

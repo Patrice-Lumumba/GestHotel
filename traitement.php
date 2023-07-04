@@ -14,8 +14,8 @@ include 'database.php';
             'email' => $email,
             'mdp' => $password
         ));
-        $reponse = $requete->fetchAll(PDO::FETCH_ASSOC);
-        var_dump($reponse);
+        // $reponse = $requete->fetchAll(PDO::FETCH_ASSOC);
+        // var_dump($reponse);
     }
     
 

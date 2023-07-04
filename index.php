@@ -15,6 +15,11 @@ include 'database.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+
+        <!-- Script pour mobile-money-widget-mtn -->
+    <script src="https://widget.northeurope.cloudapp.azure.com:9443/v0.1.0/mobile-money-widget-mtn.js"></script>
+    <link rel="stylesheet" href="./bootstrap.css">
+    
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
@@ -28,29 +33,34 @@ include 'database.php';
     
 <?php include 'views/header.php'; ?>
     
-<section id="login" class="my-5">
-<div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6 image-container p-4"><img src="./img/about.png" alt="imge de voiture" srcset="" width="50%" height="50%"></div>
-            <div class="col-md-6 d-flex align-items-center justify-content-center">
-                <div class="p-4">
-                    <h2 class="mb-4">Connexion</h2>
-                    <form class="login-form" method="POST" action="">
-                        <div class="mb-5">
-                            <label for="email" class="form-label">Email:</label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Entrez votre email" required name="email" name="email">
-                        </div>
-                        <div class="mb-5">
-                            <label for="password" class="form-label">Mot de passe:</label>
-                            <input type="password" class="form-control" name="mdp" id="password" placeholder="Entrez votre mot de passe" required name="password">
-                        </div>
-                        <button class="w-100 btn btn-lg btn-primary" type="submit" name="sign">Sign in</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+    <div class="row align-items-center g-lg-5 py-5">
+      <div class="col-lg-7 text-center text-lg-start">
+        <h1 class="display-4 fw-bold lh-1 mb-3">Formulaire de Connexion</h1>
+        <!-- <p class="col-lg-10 fs-4">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p> -->
+      </div>
+      <div class="col-md-10 mx-auto col-lg-5">
+        <form class="p-4 p-md-5 border rounded-3 bg-light">
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Email address</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+          </div>
+          <div class="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="remember-me"> Remember me
+            </label>
+          </div>
+          <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+          <hr class="my-4">
+          <small class="text-muted">Pas encore de compte? Cliquez <a href="./views/inscription.php">ici</a></small>
+        </form>
+      </div>
     </div>
-</section>
+  </div>
 
 </body>
 </html>
