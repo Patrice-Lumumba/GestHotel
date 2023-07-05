@@ -26,37 +26,36 @@
     <h1 class="text-center">Formulaire d'enregistrement</h1><br>
 
     <div class="col-md-10 mx-auto col-lg-5">
-        <form class="p-4 p-md-5 border rounded-3 bg-light">
+        <form class="p-4 p-md-5 border rounded-3 bg-light" method="post" action="../traitement.php">
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="nom" required>
             <label for="floatingInput">Votre nom</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="Votre prénom">
-            <label for="floatingPassword">Votre Prenom</label>
+            <input type="text" class="form-control" id="floatingInput" placeholder="Votre prénom" name="prenom" required>
+            <label for="floatingInput">Votre Prenom</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" required>
             <label for="floatingInput">Email address</label>
         </div>
+        
         <div class="form-floating mb-3">
-            <input type="tel" class="form-control" id="floatingInput" placeholder="N° Téléphone">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="mdp" required>
+          <label for="floatingPassword">Password</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="tel" class="form-control" id="floatingInput" placeholder="N° Téléphone" name="tel" required>
             <label for="floatingInput">Telephone</label>
         </div>
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Email address</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
-        </div>
+
         <div class="checkbox mb-3">
             <label>
             <input type="checkbox" value="remember-me"> Remember me
             </label>
         </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+        <button class="w-100 btn btn-lg btn-primary" type="submit" name="submit">Sign up</button>
         <hr class="my-4">
         <small class="text-muted">Vous avez déjà un compte? Cliquez <a href="../index.php">ici</a></small>
         </form>

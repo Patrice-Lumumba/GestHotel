@@ -167,3 +167,191 @@ mysqli_close($conn);
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+<?php
+
+    $check = $conn->prepare('SELECT pseudo, email, password FROM utilisateurs WHERE email = ?');
+    $check->execute(array($email));
+    $data = $check->fetch();
+    $row = $check->rowCount();
+
+    if($row == 0){
+        if(strlen($email <= 100)){
+            if(!$password){
+                $cost = ['cost' => 12];
+                $password = password_hash($password, PASSWORD_BCRYPT, $cost);
+
+                //Insertion
+
+            }else{echo "<script type = 'text/javascript'>alert('Echec d'authentification');</script>";die();}
+        }else{echo "<script type = 'text/javascript'>alert('Email');</script>";die();}
+    }else{header('Location: ../index.php');die();}
+
+
+
+
+
+    $requete = $conn->prepare("INSERT INTO user (nom, prenom, email, mdp, tel) VALUES (:nom, :prenom, :email, :mdp, :tel)");
+        $requete->execute(array(
+            'nom' => $nom,
+            'prenom' => $prenom,
+            'email' => $email,
+            'mdp' => $password,
+            'tel' => $tel,
+        ));
+
+?>
+
+
+
+<!-- Revoir index.php -->
+
+<?php
+
+    require_once 'database.php';
+    $message = "";
+    if(isset($_POST["sign"]))  
+    { 
+
+    if (!empty($_POST['email']) && !empty($_POST['email'])) {
+        
+        $email = $_POST['email'];
+        $password = htmlspecialchars($_POST['mdp']);
+        $email = strtolower($email);
+
+
+
+        //On vérifie s l'utilisateur est inscrit dans la BDD
+        $check = $conn->prepare("SELECT email, mdp FROM user WHERE email = :email AND mdp =:mdp");
+        // $check->execute(array($email));
+        $check->execute(  
+            array(  
+                 'email'     =>     $_POST["email"],  
+                 'mdp'     =>     $_POST["mdp"]  
+            )  
+       );  
+
+        $row = $check->rowCount();
+
+        if ($row > 0) {
+                    header('Location:welcome.php');
+                    $message = "Connexion réussie";
+                    $_SESSION['name'] = $_POST['nom'];
+
+        }else {
+          $message = "Mot de passe ou email incorrect";
+
+        }
+
+
+    }  else {
+        $message = "Tous les champs sont requis";
+    }
+
+}
+
+?>
+
+<!-- Pour la connexion -->
+
+<?php
+// Start session
+session_start();
+
+// Check if user is already logged in, redirect to another page if true
+if(isset($_SESSION['email'])) {
+    header("Location: welcome.php");
+    exit;
+}
+
+// Check if login form is submitted
+if(isset($_POST['login'])) {
+    // Simulating username and password check
+    
+
+    $email = $_POST['email'];
+    $password = $_POST['mdp'];
+
+    if(!empty($_POST['email']) && !empty($_POST['mdp'])) {
+        // Store username in session
+        $_SESSION['email'] = $username;
+
+        // Redirect to dashboard page
+        header("Location: welcome.php");
+        exit;
+    } else {
+        $error = "Invalid username or password!";
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    
+    <?php if(isset($error)) { ?>
+        <p><?php echo $error; ?></p>
+    <?php } ?>
+
+    <form method="POST" action="">
+        <label for="username">Username:</label>
+        <input type="text" name="email" id="username" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" name="mdp" id="password" required><br>
+
+        <input type="submit" name="login" value="Login">
+    </form>
+</body>
+</html>
+
+
+<?php
+
+    require_once 'database.php';
+    $message = "";
+    if(isset($_POST["sign"]))  
+    { 
+
+    if (!empty($_POST['email']) && !empty($_POST['mdp'])) {
+        
+        $email = $_POST['email'];
+        $password = htmlspecialchars($_POST['mdp']);
+        $email = strtolower($email);
+
+
+
+        //On vérifie s l'utilisateur est inscrit dans la BDD
+        $check = $conn->prepare("SELECT email, mdp FROM user WHERE email = :email AND mdp =:mdp");
+        // $check->execute(array($email));
+        $check->execute(  
+            array(  
+                 'email'     =>     $_POST["email"],  
+                 'mdp'     =>     $_POST["mdp"]  
+            )  
+       );  
+
+        $row = $check->rowCount();
+
+        if ($row > 0) {
+                    header('Location:welcome.php');
+                    $message = "Connexion réussie";
+                    $_SESSION['name'] = $_POST['nom'];
+
+        }else {
+          $message = "Mot de passe ou email incorrect";
+
+        }
+
+
+    }  else {
+        $message = "Tous les champs sont requis";
+    }
+
+}
+
+?>

@@ -6,16 +6,22 @@ include 'database.php';
         $prenom = $_POST['prenom'];
         $email = $_POST['email'];
         $password = $_POST['mdp'];
+        $tel = $_POST['tel'];
 
-        $requete = $conn->prepare("INSERT INTO user (nom, prenom, email, mdp) VALUES (:nom, :prenom, :email, :mdp)");
+
+        $email = strtolower($email); // on transforme toutes les lettres majuscules en minuscule pour éviter que Foo@gmail.com et foo@gmail.com soient deux comptes différents ..
+        $requete = $conn->prepare("INSERT INTO user (nom, prenom, email, mdp, tel) VALUES (:nom, :prenom, :email, :mdp, :tel)");
         $requete->execute(array(
             'nom' => $nom,
             'prenom' => $prenom,
             'email' => $email,
-            'mdp' => $password
+            'mdp' => $password,
+            'tel' => $tel,
         ));
         // $reponse = $requete->fetchAll(PDO::FETCH_ASSOC);
         // var_dump($reponse);
+    }else{
+        echo "<script type = 'text/javascript'>alert('Echec d'authentification');</script>";
     }
     
 
