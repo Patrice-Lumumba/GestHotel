@@ -1,7 +1,9 @@
 <?php
 
+
     require_once 'database.php';
     $message = "";
+    global $conn;
     if(isset($_POST["sign"]))  
     { 
 

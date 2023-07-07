@@ -57,7 +57,7 @@
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit" name="submit">Sign up</button>
         <hr class="my-4">
-        <small class="text-muted">Vous avez déjà un compte? Cliquez <a href="../index.php">ici</a></small>
+        <small class="text-muted">Vous avez déjà un compte? Cliquez <a href="../home.php">ici</a></small>
         </form>
     </div>
 

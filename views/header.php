@@ -8,7 +8,7 @@
       <!-- <a href="../index.html" class="btn bg-primary text-white position-fixed ms-2" data-bs-toggle="tooltip"
          data-bs-placement="right" title="Ne pas inclure dans l'intégration">Retour</a> -->
       <div class="container">
-        <a class="navbar-brand text-uppercase fw-bold" href="#">
+        <a class="navbar-brand text-uppercase fw-bold" href="../home.php">
           Logo
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

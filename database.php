@@ -14,7 +14,7 @@ try {
     
 } catch(PDOException $e) {
     echo "Echec de la connexion : <br>" . $e->getMessage();
-    echo "Table not created";
+//    echo "Table not created";
 }
 
 ?>

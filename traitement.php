@@ -8,6 +8,8 @@ include 'database.php';
         $password = $_POST['mdp'];
         $tel = $_POST['tel'];
 
+        $cost = ['cost' => 12];
+        $password = password_hash($password, PASSWORD_BCRYPT, $cost);
 
         $email = strtolower($email); // on transforme toutes les lettres majuscules en minuscule pour éviter que Foo@gmail.com et foo@gmail.com soient deux comptes différents ..
         $requete = $conn->prepare("INSERT INTO user (nom, prenom, email, mdp, tel) VALUES (:nom, :prenom, :email, :mdp, :tel)");
@@ -23,6 +25,8 @@ include 'database.php';
     }else{
         echo "<script type = 'text/javascript'>alert('Echec d'authentification');</script>";
     }
-    
+
+
+
 
 ?>
