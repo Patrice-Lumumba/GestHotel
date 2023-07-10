@@ -48,7 +48,7 @@ if (!empty($_POST['email']) && !empty($_POST['mdp'])) {
 
         <!-- Script pour mobile-money-widget-mtn -->
     <!-- <script src="https://widget.northeurope.cloudapp.azure.com:9443/v0.1.0/mobile-money-widget-mtn.js"></script> -->
-    <!-- <link rel="stylesheet" href="./bootstrap.css"> -->
+     <link rel="stylesheet" href="./bootstrap.min.css">
 
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">

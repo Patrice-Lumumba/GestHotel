@@ -21,6 +21,8 @@ try {
 }
 ?>
 
+
+
 <?php
 $servername = "localhost";
 $username = "nom_utilisateur";
@@ -354,4 +356,66 @@ if(isset($_POST['login'])) {
 
 }
 
+
+//    Sauvegarder l'image dans la BD
+function storeImageInDatabase($imagePath) {
+    $servername = "localhost";
+    $username = "your_username";
+    $password = "your_password";
+    $dbname = "your_database_name";
+
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Lecture du contenu de l'image
+        $imageData = file_get_contents($imagePath);
+
+        // Encodage de l'image en base64
+        $base64Image = base64_encode($imageData);
+
+        // Préparation de la requête SQL pour insérer l'image dans la base de données
+        $stmt = $conn->prepare("INSERT INTO images (image_data) VALUES (:image)");
+        $stmt->bindParam(':image', $base64Image);
+
+        // Exécution de la requête
+        $stmt->execute();
+
+        echo "L'image a été stockée dans la base de données avec succès.";
+    } catch(PDOException $e) {
+        echo "Erreur : " . $e->getMessage();
+    }
+
+    $conn = null;
+}
+
 ?>
+<!--Recherche-->
+<?php
+function search($query) {
+// Connexion à la base de données
+$dsn = 'mysql:host=localhost;dbname=nom_de_la_base_de_donnees;charset=utf8';
+$username = 'nom_utilisateur';
+$password = 'mot_de_passe';
+$options = array(
+PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+);
+$pdo = new PDO($dsn, $username, $password, $options);
+
+// Préparation de la requête SQL avec un paramètre de recherche
+$sql = "SELECT * FROM table WHERE colonne LIKE :query";
+
+// Exécution de la requête avec le paramètre de recherche
+$stmt = $pdo->prepare($sql);
+$stmt->execute(array(':query' => '%'.$query.'%'));
+
+// Récupération des résultats de la requête
+$results = $stmt->fetchAll();
+
+// Retour des résultats
+return $results;
+}
+
+$query = "SELECT *, concat(nom,' ',prenom) as name from 'user' where user_id !='1' order by concat(nom,' ',prenom) asc ";
+$result = $pdo->query($query);
