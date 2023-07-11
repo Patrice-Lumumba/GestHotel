@@ -26,6 +26,8 @@ try {
         echo "ID: " . $utilisateur['user_id'] . "<br>";
         echo "Nom: " . $utilisateur['nom'] . "<br>";
         echo "Email: " . $utilisateur['email'] . "<br><br>";
+        echo "Check_in: " . $utilisateur['check_in'] . "<br><br>";
+        echo "Check_out: " . $utilisateur['check_out'] . "<br><br>";
     }
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();

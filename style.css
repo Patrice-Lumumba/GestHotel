@@ -1,11 +1,9 @@
-*{
-    margin: 0;
-    padding: 0;
+@import url('https://fonts.googleapis.com/css2? family= Fasthand & display=swap');
+
+* {
     box-sizing: border-box;
-    scroll-padding-top: 2rem;
-    scroll-behavior: smooth;
-    list-style: none;
-    text-decoration: none;
+    /*font-family: url('https://fonts.googleapis.com/css2? family= Fasthand & display=swap');*/
+    font-family: 'Fasthand', cursive;
 }
 
 :root{
@@ -15,91 +13,87 @@
     --gradient: linear-gradient(#fe5b3d,#ffac38);
 }
 
-
-html::-webkit-scrollbar{
-    width: 0.5rem;
-}
-
-html::-webkit-scrollbar-track{
-    background: transparent;
-}
-
-html::-webkit-scrollbar-thumb{
-    background: var(--main-color);
-    border-radius: 5rem;
-}
-
 section{
     padding: 50px 100px;
 }
 
-header{
-    position: fixed;
+.home{
     width: 100%;
-    top: 0;
-    right: 0;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #eeeff1;
-    padding: 15px 100px;
-}
-
-.logo img{
-    width: 40px;
-}
-
-.navbar{
-    display: flex;
-}
-
-.navbar li{
+    min-height: 100vh;
     position: relative;
+    background: url(./img/sieuwert-otterloo-aren8nutd1Q-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(2,1fr);
 }
 
-.navbar a{
-    font-size: 1rem;
-    padding: 10px 20px;
-    color: var(--text-color);
-    font-weight: 500;
+.text h1{
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+    color: white;
 }
 
-.navbar a::after{
-    content: "";
-    width: 0;
-    height: 3px;
-    background: var(--gradient);
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    transition: 0.5s;
+.text span{
+    color: var(--main-color);
 }
 
-.navbar a:hover::after{
-    width: 100%;
+.text p{
+    margin: 00.5rem 0 1rem;
 }
 
-#menu-icon{
-    font-size: 24px;
+.app-stores{
+    display: flex;
+}
+
+.app-stores img{
+    width: 100px;
+    margin-right: 1rem;
     cursor: pointer;
-    z-index: 10001;
-    display: none;
 }
 
-.header-btn a{
-    padding: 10px 20px;
-    color: var(--text-color);
-    font-weight: 500;
-}
-
-.header-btn .sign-up{
-    background: #474fa0;
-    color: #fff;
+.form-container form{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    position: absolute;
+    bottom: 4rem;
+    left: 100px;
+    background: #fff;
+    padding: 20px;
     border-radius: 0.5rem;
 }
 
-.header-btn .sign-up :hover{
-    background: var(--main-color);
+.input-box{
+    flex: 1 1 7rem;
+    display: block;
+    flex-direction: column;
 }
 
+.input-box span{
+    padding: 7px;
+    outline: none;
+    border: none;
+    background: #eeeff1;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+
+.form-container form .btn{
+    flex: 1 1 7rem;
+    padding: 10px 34px;
+    border: none;
+    border-radius: 0.5rem;
+    background: #474fa0;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.form-container form .btn:hover{
+    background: var(--gradient);
+    cursor: pointer;
+}
