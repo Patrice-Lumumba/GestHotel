@@ -419,3 +419,74 @@ return $results;
 
 $query = "SELECT *, concat(nom,' ',prenom) as name from 'user' where user_id !='1' order by concat(nom,' ',prenom) asc ";
 $result = $pdo->query($query);
+
+
+
+//----------------enregistrer une image dans la BD---------------------//
+
+
+// Récupérer la valeur sélectionnée du champ de sélection
+$pays = $_POST['pays'];
+
+// Connexion à la base de données
+$servername = "localhost";
+$username = "nom_utilisateur";
+$password = "mot_de_passe";
+$dbname = "nom_base_de_donnees";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Vérifier la connexion
+if ($conn->connect_error) {
+    die("Échec de la connexion : " . $conn->connect_error);
+}
+
+// Préparer la requête SQL pour insérer la valeur dans la base de données
+$stmt = $conn->prepare("INSERT INTO table_nom (nom_colonne) VALUES (?)");
+$stmt->bind_param("s", $pays);
+
+// Exécuter la requête
+if ($stmt->execute()) {
+    echo "Enregistrement réussi dans la base de données !";
+} else {
+    echo "Erreur lors de l'enregistrement : " . $stmt->error;
+}
+
+// Fermer la connexion à la base de données
+$stmt->close();
+$conn->close();
+
+
+//                        Role !!!!
+
+$dsn = 'mysql:host=localhost;dbname=test';
+$username = 'root';
+$password = '';
+
+$dbh = new PDO($dsn, $username, $password);
+$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+if(isset($_POST['insert']))
+{
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $tel = $_POST['tel'];
+    $email = $_POST['email'];
+    $check_in = $_POST['check_in'];
+    $check_out = $_POST['check_out'];
+
+
+
+    $stmt = $dbh->prepare("INSERT INTO user (nom, prenom, tel, email, check_in, check_out) VALUES('$nom', '$prenom', '$tel', '$email', '$check_in', '$check_out')");
+    $stmt->execute();
+
+    // Récupération de l'ID de la dernière insertion
+    $lastInsertId = $dbh->lastInsertId();
+
+    // Affichage de l'ID
+    echo "ID de la dernière insertion : $lastInsertId";
+
+
+
+}
