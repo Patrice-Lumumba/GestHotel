@@ -2,9 +2,9 @@
 <?php
 
     session_start();
-
+//    include 'assests/validateFrom.js';
      include 'header.php';
-     include 'functions.php';
+//     include 'functions.php';
     //  require_once 'database.php';
 
 
@@ -20,6 +20,10 @@
   <link rel="stylesheet" href="../bootstrap.css">
 
 </head>
+
+<script type="text/javascript" src="test.js">
+
+</script>
 <body>
 
 <div class="container">
@@ -36,13 +40,15 @@
             <label for="floatingInput">Votre Prenom</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" required>
-            <label for="floatingInput">Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email" required>
+            <label for="email">Email address</label>
+            <span id="emailMsg"></span>
         </div>
         
         <div class="form-floating mb-3">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="mdp" required>
-          <label for="floatingPassword">Password</label>
+          <input type="password" class="form-control" id="pass" placeholder="Password" name="mdp" required>
+          <label for="pass">Password</label>
+            <span id="passMsg"></span>
         </div>
 
         <div class="form-floating mb-3">

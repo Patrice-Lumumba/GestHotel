@@ -79,7 +79,10 @@
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Contact</th>
+<!--                <th>Role</th>-->
                 <th colspan="2">Action</th>
+
+
 
             </tr>
             </thead>
@@ -96,9 +99,11 @@
                             <th> <?php echo $row['id_user']; ?> </th>
                             <th> <?php echo $row['nom']; ?> </th>
                             <th> <?php echo $row['prenom']; ?> </th>
-                            <th> <?php echo $row['email']; ?> </th>
+<!--                            <th> --><?php //echo $row['role']; ?><!--</th>-->
+<!--                            <th> --><?php //echo $row['email']; ?><!-- </th>-->
                             <!--                    <th> --><?php //echo $row['mdp']; ?><!-- </th>-->
                             <!--                    <th> --><?php //echo $row['tel']; ?><!-- </th>-->
+
 
                             <form action="updateUser.php" method="post">
                                 <input type="hidden" name="id" value="<?php echo $row['id_user'] ?>">
